@@ -1,0 +1,108 @@
+<?php
+$v_params = $this->getParams();
+$listaAcidentesTrabalho = $v_params['listaAcidentesTrabalho'];
+?>
+
+<?php include_once 'header.php';?>
+
+<h2>Filtre a sua pesquisa</h2>
+
+<form id="formFiltar" action="index.php" method="post">
+
+	<input type="hidden" name="controle" value="AcidenteTrabalho">
+	<input type="hidden" name="acao" value="listarAcidentesTrabalho">
+	
+	<fieldset>
+		<legend>Escolha as opções</legend>
+		<label for="selectAno"> Selecione o Ano: </label>	
+		<select id="selectAno" name="ano">
+			<option value="2002" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2002')   ? 'selected="selected"' : '' ?>>2002</option>
+			<option value="2003" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2003')   ? 'selected="selected"' : '' ?>>2003</option>
+			<option value="2004" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2004')   ? 'selected="selected"' : '' ?>>2004</option>
+			<option value="2005" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2005')   ? 'selected="selected"' : '' ?>>2005</option>
+			<option value="2006" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2006')   ? 'selected="selected"' : '' ?>>2006</option>
+			<option value="2007" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2007')   ? 'selected="selected"' : '' ?>>2007</option>
+			<option value="2008" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2008')   ? 'selected="selected"' : '' ?>>2008</option>
+			<option value="2009" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2009')   ? 'selected="selected"' : '' ?>>2009</option>
+		</select>
+		&ensp;&ensp;
+		
+		<label for="selectEstado"> Selecione o Estado: </label>
+		<select id="selectEstado" name="uf">
+			<option value=""   <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '')   ? 'selected="selected"' : '' ?>>TODOS</option>
+			<option value="BA" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == 'BA') ? 'selected="selected"' : '' ?>>BA</option>
+			<option value="DF" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == 'DF') ? 'selected="selected"' : '' ?>>DF</option>
+		</select>
+		
+		<input type="submit" name="filtar" value="Filtrar" />
+	</fieldset>	
+</form>
+
+<br />
+
+<h2>Resultado da Pesquisa</h2>
+<table border="1" id="myTable" class="dataTable" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Codigo</th>
+			<th>Nome</th>
+			<th>UF</th>
+			<th>Qtd. Obitos</th>
+			<th>Qtd. Acid. Doen&ccedil;a</th>
+			<th>Qtd. Acid. T&iacute;picos</th>
+			<th>Qtd. Acid. Trajeto</th>
+			<th>Qtd. Acid. Outros</th>
+		</tr>
+	</thead>
+	
+	<tfoot>
+		<tr>
+			<th>Codigo</th>
+			<th>Nome</th>
+			<th>UF</th>
+			<th>Qtd. Obitos</th>
+			<th>Qtd. Acid. Doen&ccedil;a</th>
+			<th>Qtd. Acid. T&iacute;picos</th>
+			<th>Qtd. Acid. Trajeto</th>
+			<th>Qtd. Acid. Outros</th>
+		</tr>
+	</tfoot>
+	
+	<tbody>
+		<?php
+		foreach ($listaAcidentesTrabalho as $acidenteTrabalho) {
+			?>
+		<tr>
+			<td>
+				<?php echo $acidenteTrabalho->getCodigo(); ?>
+			</td>
+			<td>
+				<?php echo $acidenteTrabalho->getNome(); ?>
+			</td>
+			<td>
+				<?php echo $acidenteTrabalho->getUf(); ?>
+			</td>
+			
+			<td class="center">
+				<?php echo $acidenteTrabalho->getQuantidadeAcidenteDoenca(); ?>
+			</td>
+			<td class="center">
+				<?php echo $acidenteTrabalho->getQuantidadeAcidenteTipico(); ?>
+			</td>
+			<td class="center">
+				<?php echo $acidenteTrabalho->getQuantidadeAcidenteTrajeto(); ?>
+			</td>
+			<td class="center">
+				<?php echo $acidenteTrabalho->getQuantidadeAcidenteOutros(); ?>
+			</td>
+			<td class="center">
+				<?php echo $acidenteTrabalho->getQuantidadeObito(); ?>
+			</td>		
+		</tr>
+		<?php
+		}
+		?>
+	</tbody>
+</table>
+
+<?php include_once 'footer.php';?>

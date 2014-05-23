@@ -1,0 +1,113 @@
+<?php
+
+class AcidenteTrabalhoModel {
+	
+	// propriedades da classe objeto
+	private $codigo;
+	private $nome;
+	private $uf;
+	private $quantidadeAcidenteDoenca;
+	private $quantidadeAcidenteTipico;
+	private $quantidadeAcidenteTrajeto;
+	private $quantidadeAcidenteOutros;
+	private $quantidadeObito;
+	
+	// setters e getters
+	public function setNome($nome) {
+		$this->nome = $nome;
+	}
+
+	public function getNome() {
+		return $this->nome;
+	}
+
+	public function setCodigo($codigo) {
+		$this->codigo = $codigo;
+	}
+
+	public function getCodigo() {
+		return $this->codigo;
+	}
+
+	public function setUf($uf) {
+		$this->uf = $uf;
+	}
+
+	public function getUf() {
+		return $this->uf;
+	}
+
+	public function getQuantidadeAcidenteDoenca() {
+		return $this->quantidadeAcidenteDoenca;
+	}
+
+	public function setQuantidadeAcidenteDoenca($quantidadeAcidenteDoenca) {
+		$this->quantidadeAcidenteDoenca = $quantidadeAcidenteDoenca;
+		return $this;
+	}
+
+	public function getQuantidadeAcidenteTipico() {
+		return $this->quantidadeAcidenteTipico;
+	}
+
+	public function setQuantidadeAcidenteTipico($quantidadeAcidenteTipico) {
+		$this->quantidadeAcidenteTipico = $quantidadeAcidenteTipico;
+		return $this;
+	}
+
+	public function getQuantidadeAcidenteTrajeto() {
+		return $this->quantidadeAcidenteTrajeto;
+	}
+
+	public function setQuantidadeAcidenteTrajeto($quantidadeAcidenteTrajeto) {
+		$this->quantidadeAcidenteTrajeto = $quantidadeAcidenteTrajeto;
+		return $this;
+	}
+
+	public function getQuantidadeAcidenteOutros() {
+		return $this->quantidadeAcidenteOutros;
+	}
+
+	public function setQuantidadeAcidenteOutros($quantidadeAcidenteOutros) {
+		$this->quantidadeAcidenteOutros = $quantidadeAcidenteOutros;
+		return $this;
+	}
+
+	public function getQuantidadeObito() {
+		return $this->quantidadeObito;
+	}
+
+	public function setQuantidadeObito($quantidadeObito) {
+		$this->quantidadeObito = $quantidadeObito;
+		return $this;
+	}
+
+	public function _list($ano = null, $uf = null) {
+		
+		//Recupera a lista baseada no ano
+		$result = JsonDAO::getObjectContent($ano);	
+	
+		$acidentesTrabalho = array();
+		foreach ($result->acidentes_de_trabalho as $acidenteTrabalho) {
+			
+			if (is_null($uf) || ($acidenteTrabalho->municipio->uf == $uf) ) {
+				$acidenteTrabalhoModel = new AcidenteTrabalhoModel();
+				
+				$acidenteTrabalhoModel->setCodigo($acidenteTrabalho->municipio->cod_ibge);
+				$acidenteTrabalhoModel->setNome($acidenteTrabalho->municipio->nome);
+				$acidenteTrabalhoModel->setUf($acidenteTrabalho->municipio->uf);
+				
+				$acidenteTrabalhoModel->setQuantidadeAcidenteDoenca($acidenteTrabalho->quantidade->acidentes_com_cat->doenca);
+				$acidenteTrabalhoModel->setQuantidadeAcidenteTipico($acidenteTrabalho->quantidade->acidentes_com_cat->tipicos);
+				$acidenteTrabalhoModel->setQuantidadeAcidenteTrajeto($acidenteTrabalho->quantidade->acidentes_com_cat->trajeto);
+				$acidenteTrabalhoModel->setQuantidadeAcidenteOutros($acidenteTrabalho->quantidade->acidentes_sem_cat);
+				$acidenteTrabalhoModel->setQuantidadeObito($acidenteTrabalho->quantidade->obitos);			
+				
+				$acidentesTrabalho[] = $acidenteTrabalhoModel;
+			}
+		}	
+		
+		return $acidentesTrabalho;
+	}
+}
+
