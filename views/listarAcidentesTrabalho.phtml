@@ -16,14 +16,14 @@ $listaAcidentesTrabalho = $v_params['listaAcidentesTrabalho'];
 		<legend>Escolha as opções</legend>
 		<label for="selectAno"> Selecione o Ano: </label>	
 		<select id="selectAno" name="ano">
-			<option value="2002" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2002')   ? 'selected="selected"' : '' ?>>2002</option>
-			<option value="2003" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2003')   ? 'selected="selected"' : '' ?>>2003</option>
-			<option value="2004" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2004')   ? 'selected="selected"' : '' ?>>2004</option>
-			<option value="2005" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2005')   ? 'selected="selected"' : '' ?>>2005</option>
-			<option value="2006" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2006')   ? 'selected="selected"' : '' ?>>2006</option>
-			<option value="2007" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2007')   ? 'selected="selected"' : '' ?>>2007</option>
-			<option value="2008" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2008')   ? 'selected="selected"' : '' ?>>2008</option>
-			<option value="2009" <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '2009')   ? 'selected="selected"' : '' ?>>2009</option>
+			<option value="2002" <?php print (isset($_REQUEST['ano']) && $_REQUEST['ano'] == '2002')   ? 'selected="selected"' : '' ?>>2002</option>
+			<option value="2003" <?php print (isset($_REQUEST['ano']) && $_REQUEST['ano'] == '2003')   ? 'selected="selected"' : '' ?>>2003</option>
+			<option value="2004" <?php print (isset($_REQUEST['ano']) && $_REQUEST['ano'] == '2004')   ? 'selected="selected"' : '' ?>>2004</option>
+			<option value="2005" <?php print (isset($_REQUEST['ano']) && $_REQUEST['ano'] == '2005')   ? 'selected="selected"' : '' ?>>2005</option>
+			<option value="2006" <?php print (isset($_REQUEST['ano']) && $_REQUEST['ano'] == '2006')   ? 'selected="selected"' : '' ?>>2006</option>
+			<option value="2007" <?php print (isset($_REQUEST['ano']) && $_REQUEST['ano'] == '2007')   ? 'selected="selected"' : '' ?>>2007</option>
+			<option value="2008" <?php print (isset($_REQUEST['ano']) && $_REQUEST['ano'] == '2008')   ? 'selected="selected"' : '' ?>>2008</option>
+			<option value="2009" <?php print (isset($_REQUEST['ano']) && $_REQUEST['ano'] == '2009')   ? 'selected="selected"' : '' ?>>2009</option>
 		</select>
 		&ensp;&ensp;
 		
@@ -41,7 +41,7 @@ $listaAcidentesTrabalho = $v_params['listaAcidentesTrabalho'];
 <br />
 
 <h2>Resultado da Pesquisa</h2>
-<table border="1" id="myTable" class="dataTable" cellspacing="0">
+<table border="1" id="myTable" class="dataTable display" cellspacing="0">
 	<thead>
 		<tr>
 			<th>Codigo</th>
