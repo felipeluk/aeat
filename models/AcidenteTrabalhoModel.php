@@ -109,5 +109,45 @@ class AcidenteTrabalhoModel {
 		
 		return $acidentesTrabalho;
 	}
+	
+	public function _listEstadoComTotais($ano = null, $uf = null) {
+	
+		//Recupera a lista baseada no ano
+		$result = JsonDAO::getObjectContent($ano);
+	
+		$acidentesTrabalho = array();
+		
+		$totalQuantidadeAcidenteDoenca = 0;
+		$totalQuantidadeAcidenteTipico = 0;
+		$totalQuantidadeAcidenteTrajeto = 0;
+		$totalQuantidadeAcidenteOutros = 0;
+		$totalQuantidadeObitos = 0;
+		
+		foreach ($result->acidentes_de_trabalho as $acidenteTrabalho) {
+				
+			if (!is_null($uf) && ($acidenteTrabalho->municipio->uf == $uf) ) {
+						
+				$estado = $acidenteTrabalho->municipio->uf;
+				$totalQuantidadeAcidenteDoenca += $acidenteTrabalho->quantidade->acidentes_com_cat->doenca;
+				$totalQuantidadeAcidenteTipico += $acidenteTrabalho->quantidade->acidentes_com_cat->tipicos;
+				$totalQuantidadeAcidenteTrajeto += $acidenteTrabalho->quantidade->acidentes_com_cat->trajeto;
+				$totalQuantidadeAcidenteOutros += $acidenteTrabalho->quantidade->acidentes_sem_cat;
+				$totalQuantidadeObitos += $acidenteTrabalho->quantidade->obitos;		
+			}
+		}
+		
+		$acidenteTrabalho = new AcidenteTrabalhoModel();
+		
+		$acidenteTrabalho->setUf($estado);		
+		$acidenteTrabalho->setQuantidadeAcidenteDoenca($totalQuantidadeAcidenteDoenca);
+		$acidenteTrabalho->setQuantidadeAcidenteTipico($totalQuantidadeAcidenteTipico);
+		$acidenteTrabalho->setQuantidadeAcidenteTrajeto($totalQuantidadeAcidenteTrajeto);
+		$acidenteTrabalho->setQuantidadeAcidenteOutros($totalQuantidadeAcidenteOutros);
+		$acidenteTrabalho->setQuantidadeObito($totalQuantidadeObitos);
+	
+		return $acidenteTrabalho;
+	}
+	
+	
 }
 

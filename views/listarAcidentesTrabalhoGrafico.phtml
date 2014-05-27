@@ -1,0 +1,94 @@
+<?php
+	$v_params = $this->getParams();
+	$acidentesTrabalhoPorEstadoComTotais = $v_params['acidentesTrabalhoPorEstadoComTotais'];	
+?>
+
+<?php include_once 'header.php';?>
+
+<h2>Filtre a sua pesquisa</h2>
+
+<form id="formFiltrar" action="index.php" method="post">
+
+	<input type="hidden" name="controle" value="AcidenteTrabalho">
+	<input type="hidden" name="acao" value="listarAcidentesTrabalhoPorEstadoComTotais">
+	
+	<?php include_once 'filtroAnoEstado.php';?>
+	
+</form>
+<br />
+
+<h2>Resultado da Pesquisa</h2>
+<table border="1" id="myTable" class="dataTable display" cellspacing="0">
+	<thead>
+		<tr>	
+			<th>UF</th>
+			<th>Qtd. Obitos</th>
+			<th>Qtd. Acid. Doen&ccedil;a</th>
+			<th>Qtd. Acid. T&iacute;picos</th>
+			<th>Qtd. Acid. Trajeto</th>
+			<th>Qtd. Acid. Outros</th>
+		</tr>
+	</thead>
+	
+	<tfoot>
+		<tr>	
+			<th>UF</th>
+			<th>Qtd. Obitos</th>
+			<th>Qtd. Acid. Doen&ccedil;a</th>
+			<th>Qtd. Acid. T&iacute;picos</th>
+			<th>Qtd. Acid. Trajeto</th>
+			<th>Qtd. Acid. Outros</th>
+		</tr>
+	</tfoot>
+	
+	<tbody>
+		<tr>
+			<td>
+				<?php echo $acidentesTrabalhoPorEstadoComTotais->getUf(); ?>
+			</td>
+			
+			<td class="center">
+				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteDoenca(); ?>
+			</td>
+			<td class="center">
+				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteTipico(); ?>
+			</td>
+			<td class="center">
+				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteTrajeto(); ?>
+			</td>
+			<td class="center">
+				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteOutros(); ?>
+			</td>
+			<td class="center">
+				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeObito(); ?>
+			</td>		
+		</tr>
+	</tbody>
+</table>
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Estado',    '<?php echo $acidentesTrabalhoPorEstadoComTotais->getUf(); ?>'],
+          ['Doenca',    <?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteDoenca(); ?>],
+          ['Tipico',    <?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteTipico(); ?>],
+          ['Trajeto',   <?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteTrajeto(); ?>],
+          ['Outros',    <?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteOutros(); ?>],
+          ['Obitos',    <?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeObito(); ?>]
+        ]);
+
+        var options = {
+          title: 'Totais de Acidentes / Obitos por Estado'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+
+<div id="piechart" style="width: 800px; height: 500px;"></div>
+
+<?php include_once 'footer.php';?>

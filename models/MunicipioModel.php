@@ -56,5 +56,22 @@ class MunicipioModel {
 		
 		return $municipios;
 	}
+	
+	public function _listTodosEstados($ano = null) {
+	
+		//Recupera a lista baseada no ano
+		$result = JsonDAO::getObjectContent($ano);
+	
+		$anuarios = $result->acidentes_de_trabalho;
+	
+		$estados = array();
+		foreach ($anuarios as $anuario) {			
+			$estados[$anuario->municipio->uf] = $anuario->municipio->uf;	
+		}
+	
+		asort($estados);
+	
+		return $estados;
+	}
 }
 
