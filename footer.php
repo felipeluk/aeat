@@ -3,8 +3,8 @@
 
 <div id="footer">
 	<p>
-		Treinamento de HTML - CSS - JavaScript - jQuery <BR /> POSTALIS -
-		INSTITUTO DE SEGURIDADE SOCIAL DOS CORREIOS E TEL�GRAFOS
+		Trabalho de Laborat&oacute;rio de M&eacute;todos &Aacute;geis <br />
+		ANU&Aacute;RIO ESTAT&Iacute;STICO DE ACIDENTE DE TRABALHO
 	</p>
 </div>
 </div>

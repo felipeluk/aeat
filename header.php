@@ -3,7 +3,7 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Treinamento HTML - CSS - JavaScript - Jquery</title>
+	<title>Trabalho de Laborat&oacute;rio de M&eacute;todos &Aacute;geis </title>
 	
 	<!-- CSS Site -->	
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
