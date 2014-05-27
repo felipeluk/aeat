@@ -60,12 +60,10 @@ class MunicipioModel {
 	public function _listTodosEstados($ano = null) {
 	
 		//Recupera a lista baseada no ano
-		$result = JsonDAO::getObjectContent($ano);
-	
-		$anuarios = $result->acidentes_de_trabalho;
+		$result = JsonDAO::getObjectContent($ano);	
 	
 		$estados = array();
-		foreach ($anuarios as $anuario) {			
+		foreach ($result->acidentes_de_trabalho as $anuario) {			
 			$estados[$anuario->municipio->uf] = $anuario->municipio->uf;	
 		}
 	

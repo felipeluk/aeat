@@ -16,6 +16,10 @@
 	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 	<script type="text/javascript" src="js/customScript.js"></script>
 	
+	<!-- Google Chart -->
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	
+	
 	<!-- Teste dddd g-->
 </head>
 <body>
