@@ -5,22 +5,35 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Treinamento HTML - CSS - JavaScript - Jquery</title>
 	
-	<!-- CSS Site -->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/styleCss3.css">
+	<!-- CSS Site -->	
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables_themeroller.css">
 	
+	<!-- CSS Plugin Uniform -->
+	<link rel="stylesheet" href="css/uniform.default.css" media="screen" />	
+	
+	<!-- CSS Custom -->	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/styleCss3.css">
+	
+	
 	<!-- jQuery Core -->
 	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	
+	<!-- jQuery Tables -->
 	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
-	<script type="text/javascript" src="js/customScript.js"></script>
+	<script type="text/javascript" src="js/dataTables.jqueryui.js"></script>
+	
+	
+	<!-- jQuery Uniform -->
+	<script type="text/javascript" src="js/jquery.uniform.js"></script> 	
 	
 	<!-- Google Chart -->
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	
+	<!-- Custom JavaScript -->
+	<script type="text/javascript" src="js/customScript.js"></script>
 	
-	<!-- Teste dddd g-->
 </head>
 <body>
 
