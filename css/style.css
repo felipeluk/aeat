@@ -218,6 +218,34 @@ h2 {
 	margin: 0 auto;
 }
 
+.uniform-input {
+	padding: 10px !important;
+	width: 300px;
+}
+
+select {
+	width: 190px;
+	font-size: 12px;
+	font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	color: #777;
+	border-top: solid 1px #aaaaaa;
+	border-left: solid 1px #aaaaaa;
+	border-bottom: solid 1px #cccccc;
+	border-right: solid 1px #cccccc;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+select:hover {
+
+	
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+	border-color: #999;
+}
+
 /* EXEMPLO COM AS TAGS */
 /*
 #container{ border:4px solid black; padding: 10px;}

@@ -3,6 +3,6 @@ $(function() {
 	$('#myTable').dataTable();
 	
 	// Uniform
-	$("select, input, file").uniform();
+	$("input, file").uniform();
 
 });
