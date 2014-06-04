@@ -7,8 +7,11 @@ class AcidenteTrabalhoController {
 
 	public function homeAction() {
 		$o_view = new View('views/home.phtml');
-		
-		// Imprimindo c�digo HTML
+		$o_view->showContents();
+	}
+	
+	public function conceitosAction() {
+		$o_view = new View('views/conceitos.phtml');
 		$o_view->showContents();
 	}
 

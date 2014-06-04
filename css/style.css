@@ -8,12 +8,27 @@ body {
 	padding: 0px;
 }
 
+p{
+	font-size: 1.26em;
+	letter-spacing: -0.02em;
+	line-height: 1.45em;
+	padding-bottom: 1.5em;
+}
+
 h1 {
 	color: #eee;
 }
 
 h3 {
 	border-bottom: 3px solid #780000;
+}
+
+ul li ul li,
+ul li {
+	font-size: 1.26em;
+	letter-spacing: -0.02em;
+	line-height: 1.45em;
+	padding-bottom: 0.5em;
 }
 
 #wrapper {
@@ -62,7 +77,7 @@ h3 {
 	list-style: none;
 	min-width: 100px;
 	border-left: 1px solid #780000;
-	border-right: 1px solid #780000;
+	border-right: 1px solid #780000;	
 }
 
 #menu ul li:hover {
@@ -239,9 +254,7 @@ select {
 	padding: 10px;
 }
 
-select:hover {
-
-	
+select:hover {	
 	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
 	border-color: #999;
 }
@@ -252,8 +265,6 @@ select:hover {
 
 #evolucaoEstado,
 #chart_div1 {
-	/*margin-left: -100px;
-	width: 900px !important;*/
 	height: 500px !important;
 }
 
