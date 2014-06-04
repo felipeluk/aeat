@@ -3,7 +3,7 @@
 		$listaEstados = $param['listaEstados']; 
 	?>
 	
-	<p>Utilize os filtros ANO e ESTADO para visualizar o percentual/quantitativo de acidentes do trabalho nos estados brasileiros.</p>
+	<p>Utilize os filtros ANO e ESTADO para visualizar o percentual/quantitativo de Acidentes de Trabalho nos estados brasileiros.</p>
 	
 	<fieldset>		
 		<legend>Escolha as opções</legend>
