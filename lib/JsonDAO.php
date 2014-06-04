@@ -1,14 +1,15 @@
 <?php
 
-class JsonDAO {
-
-	const URL_ANUARIO = 'http://aeat.labageis.com/json/aeat_';
+class JsonDAO {	
 
 	static function getObjectContent($ano) {
+		
+		$URL_ANUARIO = ($_SERVER ['HTTP_HOST'] == "aeat.labageis.com") ? 'http://' . $_SERVER ['HTTP_HOST'] . '/json/aeat_' : 'http://' . $_SERVER ['HTTP_HOST'] . '/aeat/json/aeat_';
+		
 		if (! is_null($ano))
-			$url = self::URL_ANUARIO . $ano . '.php';
+			$url = $URL_ANUARIO . $ano . '.php';
 		else
-			$url = self::URL_ANUARIO . '2002.php';
+			$url = $URL_ANUARIO . '2002.php';
 		
 		$opts = array(
 			'http' => array(
