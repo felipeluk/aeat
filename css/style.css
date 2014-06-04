@@ -246,6 +246,17 @@ select:hover {
 	border-color: #999;
 }
 
+#chart_div {
+	margin-left: -100px;
+}
+
+#evolucaoEstado,
+#chart_div1 {
+	/*margin-left: -100px;
+	width: 900px !important;*/
+	height: 500px !important;
+}
+
 /* EXEMPLO COM AS TAGS */
 /*
 #container{ border:4px solid black; padding: 10px;}

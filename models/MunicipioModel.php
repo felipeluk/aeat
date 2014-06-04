@@ -71,5 +71,63 @@ class MunicipioModel {
 	
 		return $estados;
 	}
+	
+	public function _listCidadesPorEstado($ano = null, $estado = null) {
+	
+		//Recupera a lista baseada no ano
+		$result = JsonDAO::getObjectContent($ano);
+		
+		$municipios = array();
+		foreach ($result->acidentes_de_trabalho as $anuario) {
+			
+			if (!is_null($estado) && $anuario->municipio->uf == $estado) {					
+				$municipio = new MunicipioModel();
+				$municipio->setCodigo($anuario->municipio->cod_ibge);
+				$municipio->setNome($anuario->municipio->nome);
+				$municipio->setUf($anuario->municipio->uf);
+					
+				$municipios[] = $municipio;	
+				
+				unset($municipio);
+			}	
+		}
+	
+		asort($municipios);
+	
+		return $municipios;
+	}
+	
+	public function _listHistoricoAcidentesPorCidades($ano = null, $estado = null, $cidade = null) {
+	
+		//Recupera a lista baseada no ano
+		$result = JsonDAO::getObjectContent($ano);
+
+	
+		$estados = array();
+	
+		$totalQuantidadeAcidenteDoenca = 0;
+		$totalQuantidadeAcidenteTipico = 0;
+		$totalQuantidadeAcidenteTrajeto = 0;
+		$totalQuantidadeAcidenteOutros = 0;
+		$totalQuantidadeObitos = 0;
+	
+		foreach ($result->acidentes_de_trabalho as $anuario) {
+				
+			if ($anuario->municipio->uf == $estado && $anuario->municipio->nome == $cidade) {
+				$estado = $acidenteTrabalho->municipio->uf;
+				$totalQuantidadeAcidenteDoenca += $acidenteTrabalho->quantidade->acidentes_com_cat->doenca;
+				$totalQuantidadeAcidenteTipico += $acidenteTrabalho->quantidade->acidentes_com_cat->tipicos;
+				$totalQuantidadeAcidenteTrajeto += $acidenteTrabalho->quantidade->acidentes_com_cat->trajeto;
+				$totalQuantidadeAcidenteOutros += $acidenteTrabalho->quantidade->acidentes_sem_cat;
+				$totalQuantidadeObitos += $acidenteTrabalho->quantidade->obitos;
+	
+			}
+			$estados[] = $anuario->municipio->nome;
+		}
+	
+		asort($estados);
+	
+		return $estados;
+	}
 }
 

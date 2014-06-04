@@ -44,11 +44,33 @@ class AcidenteTrabalhoController {
 		// Passando os dados do contato para a View
 		$view->setParams(array(
 				'acidentesTrabalhoPorEstadoComTotais' => $acidenteTrabalhoModel->_listEstadoComTotais($ano, $uf),
-				'listaEstados' => $estadoModel->_listTodosEstados($ano)
+				'acidentesTrabalhoPorEstadoComTotaisPorAno' => $acidenteTrabalhoModel->_listEstadoComTotaisPorAno($uf),
+				'listaEstados' => $estadoModel->_listTodosEstados($ano),
+				'listaCidades' => $estadoModel->_listCidadesPorEstado($ano, $uf)
 		));
 
 		$view->showContents();
 		
+	}
+	
+	public function listarAcidentesTrabalhoPorCidadeAction() {
+		$acidenteTrabalhoModel = new AcidenteTrabalhoModel();
+		$estadoModel = new MunicipioModel();
+		
+		$uf = ( !isset($_REQUEST['uf']) || $_REQUEST['uf'] == "") ? null : strtoupper($_REQUEST['uf']);
+		$cidade = ( !isset($_REQUEST['cidade']) || $_REQUEST['cidade'] == "" ) ? null : strtoupper($_REQUEST['cidade']);
+		$ano = ( !isset($_REQUEST['ano']) || $_REQUEST['ano'] == "" ) ? null : strtoupper($_REQUEST['ano']);
+		
+		$view = new View('views/listarAcidentesTrabalhoPorCidade.phtml');
+		
+		// Passando os dados do contato para a View
+		$view->setParams(array(
+				'acidentesTrabalhoPorCidadeComTotais' => $acidenteTrabalhoModel->_listCidadesComTotais($uf, $cidade),
+				'listaEstados' => $estadoModel->_listTodosEstados($ano),
+				'listaCidades' => $estadoModel->_listCidadesPorEstado($ano, $uf)
+		));
+		
+		$view->showContents();
 	}
 }
       

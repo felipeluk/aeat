@@ -19,6 +19,7 @@
 	
 	<!-- jQuery Core -->
 	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	
 	<!-- jQuery Tables -->
 	<script type="text/javascript" src="js/jquery.dataTables.js"></script>

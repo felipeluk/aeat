@@ -2,7 +2,10 @@
 		$param = $this->getParams();		
 		$listaEstados = $param['listaEstados']; 
 	?>
-	<fieldset>
+	
+	<p>Utilize os filtros ANO e ESTADO para visualizar o percentual/quantitativo de acidentes do trabalho nos estados brasileiros.</p>
+	
+	<fieldset>		
 		<legend>Escolha as opções</legend>
 		<div id="content-fieldset">
 			<label for="selectAno"> Ano: </label>	
@@ -23,7 +26,6 @@
 				<option value=""   <?php print (isset($_REQUEST['uf']) && $_REQUEST['uf'] == '')   ? 'selected="selected"' : '' ?>>TODOS</option>			
 				<?php 
 					foreach ($listaEstados as $estado) {
-						//print_r($estado);
 						$selected = (isset($_REQUEST['uf']) && $_REQUEST['uf'] == $estado) ? 'selected=\"selected\"' : ''; 
 						print "<option value=\"$estado\" $selected  >" . $estado . "</option>";
 					}
