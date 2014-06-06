@@ -1,4 +1,7 @@
 <?php
+
+session_start("json");
+
 // incluindo classes da camada Model
 require_once 'models/AcidenteTrabalhoModel.php';
 require_once 'models/MunicipioModel.php';
