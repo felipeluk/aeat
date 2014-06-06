@@ -14,17 +14,15 @@
 	
 	<!-- CSS Custom -->	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/styleCss3.css">
-	
+	<link rel="stylesheet" type="text/css" href="css/styleCss3.css">	
 	
 	<!-- jQuery Core -->
-	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>	
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	
 	<!-- jQuery Tables -->
 	<script type="text/javascript" src="js/jquery.dataTables.js"></script>
-	<script type="text/javascript" src="js/dataTables.jqueryui.js"></script>
-	
+	<script type="text/javascript" src="js/dataTables.jqueryui.js"></script>	
 	
 	<!-- jQuery Uniform -->
 	<script type="text/javascript" src="js/jquery.uniform.js"></script> 	
@@ -36,6 +34,7 @@
 	<script type="text/javascript" src="js/customScript.js"></script>
 	
 </head>
+
 <body>
 
 	<div id="container">

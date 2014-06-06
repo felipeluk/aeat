@@ -56,6 +56,23 @@ class AcidenteTrabalhoController {
 		
 	}
 	
+	public function ajaxListarAcidentesTrabalhoPorEstadoComTotaisAction() {
+	
+		$acidenteTrabalhoModel = new AcidenteTrabalhoModel();		
+	
+		$uf = ( !isset($_REQUEST['uf']) || $_REQUEST['uf'] == "") ? null : strtoupper($_REQUEST['uf']);
+		$ano = ( !isset($_REQUEST['ano']) || $_REQUEST['ano'] == "" ) ? null : strtoupper($_REQUEST['ano']);
+	
+		$view = new View('views/ajaxEvolucaoEstado.phtml');
+	
+		// Passando os dados do contato para a View
+		$view->setParams(array(	
+				'acidentesTrabalhoPorEstadoComTotaisPorAno' => $acidenteTrabalhoModel->_listEstadoComTotaisPorAno($uf)			
+		));
+	
+		$view->showContents();	
+	}
+	
 	public function listarAcidentesTrabalhoPorCidadeAction() {
 		$acidenteTrabalhoModel = new AcidenteTrabalhoModel();
 		$estadoModel = new MunicipioModel();

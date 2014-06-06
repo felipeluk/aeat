@@ -47,23 +47,23 @@
 	<tbody>
 		<tr>
 			<td>
-				<?php echo $acidentesTrabalhoPorEstadoComTotais->getUf(); ?>
+				<?php //echo $acidentesTrabalhoPorEstadoComTotais->getUf(); ?>
 			</td>
 
 			<td class="center">
-				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteDoenca(); ?>
+				<?php //echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteDoenca(); ?>
 			</td>
 			<td class="center">
-				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteTipico(); ?>
+				<?php //echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteTipico(); ?>
 			</td>
 			<td class="center">
-				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteTrajeto(); ?>
+				<?php //echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteTrajeto(); ?>
 			</td>
 			<td class="center">
-				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteOutros(); ?>
+				<?php //echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeAcidenteOutros(); ?>
 			</td>
 			<td class="center">
-				<?php echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeObito(); ?>
+				<?php //echo $acidentesTrabalhoPorEstadoComTotais->getQuantidadeObito(); ?>
 			</td>
 		</tr>
 	</tbody>
@@ -97,57 +97,22 @@
 
 <div id="piechart" style="height: 500px; text-align: center;"></div>
 
-
-<!-- 
-<button id="opEvolucao">Veja a Evolu&ccedil;&atilde;o</button>
- -->
-
-<script type="text/javascript">
-
-	google.load("visualization", "1", {packages:["corechart"]});
-	google.setOnLoadCallback(drawVisualization);
-      function drawVisualization() {
-        // Some raw data (not necessarily accurate)
-        var data = google.visualization.arrayToDataTable([
-          ['Ano', 'Doencas', 'Tipicos', 'Trajetos', 'Outros', 'Obitos', 'Average'],
-
-          <?php foreach ($acidentesTrabalhoPorEstadoComTotaisPorAno as $acidentesTrabalho) {?>
-          		<?php 
-          			$total = $acidentesTrabalho->getQuantidadeAcidenteDoenca() + $acidentesTrabalho->getQuantidadeAcidenteTipico() + $acidentesTrabalho->getQuantidadeAcidenteTrajeto() + $acidentesTrabalho->getQuantidadeAcidenteOutros() + $acidentesTrabalho->getQuantidadeObito();
-					$media = $total/5;
-          		?>
-			<?php print "['". $acidentesTrabalho->getAno() . "' ," .   $acidentesTrabalho->getQuantidadeAcidenteDoenca() . "," . $acidentesTrabalho->getQuantidadeAcidenteTipico() . "," . $acidentesTrabalho->getQuantidadeAcidenteTrajeto() . "," . $acidentesTrabalho->getQuantidadeAcidenteOutros() . "," . $acidentesTrabalho->getQuantidadeObito() . "," . $media . "],"; ?>
-          <?php } ?>
-
-        ]);
-
-		var title = 'Evolucao de acidentes ao no periodo de 2002 a 2009 no estado (<?php echo $_REQUEST['uf']; ?>)';
-		
-        var options = {
-          title : title,
-          vAxis: {title: "Quantitativos"},
-          hAxis: {title: "Ano"},
-          seriesType: "bars",
-          series: {5: {type: "line"}}
-        };
-
-        var chart = new google.visualization.ComboChart(document.getElementById('chart_div1'));
-        chart.draw(data, options);
-      }
-     
-    </script>
-    
 <div id="evolucaoEstado">
 	<h2>Evolu&ccedil;&atilde;o AEAT no periodo de 2002 a 2009</h2>
 	
-	<p>Veja toda a evolu&ccedil;&atilde;o dos acidendes de trabalho no periodo de 2002 a 2009 referente ao estado da <?php echo $acidentesTrabalhoPorEstadoComTotais->getUf(); ?>
+	<p>Veja toda a evolu&ccedil;&atilde;o dos acidendes de trabalho no periodo de 2002 a 2009 referente ao estado da <?php echo $acidentesTrabalhoPorEstadoComTotais->getUf(); ?>, clicando no link abaixo:
 	</p>
-
-	<div id="chart_div1"></div>
+	
+	<div class="button-visualizar">
+	<input type="button" id="opEvolucao" value="Visualizar" />
+	</div>
+	<div id="chart_div"></div>
 </div>
 
-<br /><br />
-<div style="clear:both; height: 90px;"></div>
+<br /><br /><br />
+<div style="clear:both;"></div>
 <?php include_once 'filtroPorCidade.php';?>
 
 <?php include_once 'footer.php';?>
+
+<div class="testeGrafico"></div>
