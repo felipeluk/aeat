@@ -1,0 +1,45 @@
+<?php include_once 'header.php';?>
+
+<div id="content-principal">
+	<h2>Objetivo</h2>
+
+	<p>Desenvolver uma aplica&ccedil;&atilde;o que facilite a pesquisa do
+		usu&aacute;rio em obter informa&ccedil;&otilde;es a respeito da
+		Quantidade de Acidentes de Trabalhos que ocorrem no Brasil.</p>
+
+	<p>O Anu&aacute;rio Estat&iacute;stico de Acidentes de Trabalho - AEAT
+		&eacute; um documento p&uacute;blico, com edi&ccedil;&atilde;o e
+		publica&ccedil;&otilde;es anuais em meio papel e vers&atilde;o digital
+		acess&iacute;vel por meio do s&iacute;tio do Minist&eacute;rio da
+		Previd&ecirc;ncia Social.</p>
+
+	<p>No caso deste trabalho, selecionamos infoma&ccedil;&otilde;es
+		disponibilizadas na Se&ccedil;&atilde;o I subse&ccedil;&atilde;o D do
+		Anu&aacute;rio, conte&uacute;do que trata de Comunica&ccedil;&atilde;o
+		de Acidente de Trabalho (CAT), suas consequ&ecirc;ncias, por
+		localiza&ccedil;&atilde;o geogr&aacute;fica das ocorr&ecirc;ncias
+		(munic&iacute;pio) e seus respectivos quantitativos.</p>
+
+	<p>As informa&ccedil;&otilde;es da Comunica&ccedil;&atilde;o de
+		Acidente do Trabalho (CAT) t&ecirc;m origem nos registros dos
+		benef&iacute;cios de natureza acident&aacute;ria concedidos pelo INSS.</p>
+
+	<p> <b>Para maiores detalhes de acesso (API), consulte a URL:</b>
+		<ul>
+			<li>http://api.dataprev.gov.br/previdencia/anuario/ANO/acidentes-do-trabalho.FORMATO</li>
+		</ul>
+	</p>
+		
+
+	<p>Dois par&acirc;metros s&atilde;o necess&aacute;rios para solicitar
+		qualquer dado atrav&eacute;s da API: ANO e FORMATO. O par&acirc;metro
+		ano permite selecionar a s&eacute;rie anual desejada, de 2002 a 2009.
+		O formato define sua prefer&ecirc;ncia em receber a resposta em XML,
+		JSON ou CSV.</p>
+		
+	<h2>Exemplo</h2>
+	<p> <a href="http://api.dataprev.gov.br/previdencia/anuario/2009/acidentes-do-trabalho.json" title="Link para arquivo json"> http://api.dataprev.gov.br/previdencia/anuario/2009/acidentes-do-trabalho.json </a>
+	</p>
+</div>
+
+<?php include_once 'footer.php';?>

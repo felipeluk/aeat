@@ -111,7 +111,7 @@ ul li {
 	margin: 0px 10px;
 	float: left;
 	min-height: 300px;
-	width: 78%;
+	width: 75%;
 }
 
 #footer {
@@ -264,8 +264,12 @@ select:hover {
 	padding: 0;
 }
 
+#chart_divEstado {
+	
+}
+
 #chart_divCidade {
-	margin-left: -100px;
+	
 }
 
 #evolucaoEstado .button-visualizar {
@@ -278,6 +282,10 @@ select:hover {
 	font-weight: bold;
 	font-size: 16px;
 	color: #780000;
+}
+
+.active {
+	background: #F8F8F8;
 }
 
 /* EXEMPLO COM AS TAGS */

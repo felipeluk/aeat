@@ -29,7 +29,15 @@ $(function() {
     	$('#chart_div').load('index.php?controle=AcidenteTrabalho&acao=ajaxListarAcidentesTrabalhoPorEstadoComTotais&uf='+uf+'&ano='+ano, function() {
     		drawVisualization();
     	}).dialog("open");
-
     });
-	
+    
+    $( "#opEvolucaoCidade" ).click(function() {   
+    	var cidade = $( "#selectCidade option:selected" ).val();
+    	var uf = $( "#selectEstado option:selected" ).val();
+    	$('#chart_divCidade').html("<div class=\"aguarde\"> Processando os dados... <br /><br /> Favor aguarde! </div>");
+    	$('#chart_divCidade').load('index.php?controle=AcidenteTrabalho&acao=ajaxListarAcidentesTrabalhoPorCidadeComTotais&uf='+uf+'&cidade='+cidade, function() {
+    		drawVisualization();
+    	});
+    });
+  
 });

@@ -97,6 +97,11 @@ class MunicipioModel {
 		return $municipios;
 	}
 	
+	public function _getPrimeiraCidade($ano = null, $estado = null) {
+		$result = JsonDAO::getObjectContent($ano);
+		return $result->acidentes_de_trabalho[1]->municipio->nome;
+	}
+	
 	public function _listHistoricoAcidentesPorCidades($ano = null, $estado = null, $cidade = null) {
 	
 		//Recupera a lista baseada no ano

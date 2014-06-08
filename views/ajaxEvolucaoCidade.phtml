@@ -1,0 +1,41 @@
+<?php
+	$v_params = $this->getParams();
+	$acidentesTrabalhoPorCidadeComTotais = $v_params['acidentesTrabalhoPorCidadeComTotais'];
+?>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+ <script type="text/javascript">
+ 
+      google.load('visualization', '1', {packages: ['corechart']});
+      
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+          ['Ano', 'Doencas', 'Tipicos', 'Trajetos', 'Outros', 'Obitos', 'Media'],
+
+          <?php foreach ($acidentesTrabalhoPorCidadeComTotais as $acidentesTrabalho) {?>
+          		<?php 
+          			$total = $acidentesTrabalho->getQuantidadeAcidenteDoenca() + $acidentesTrabalho->getQuantidadeAcidenteTipico() + $acidentesTrabalho->getQuantidadeAcidenteTrajeto() + $acidentesTrabalho->getQuantidadeAcidenteOutros() + $acidentesTrabalho->getQuantidadeObito();
+					$media = $total/5;
+          		?>
+			<?php print "['". $acidentesTrabalho->getAno() . "' ," .   $acidentesTrabalho->getQuantidadeAcidenteDoenca() . "," . $acidentesTrabalho->getQuantidadeAcidenteTipico() . "," . $acidentesTrabalho->getQuantidadeAcidenteTrajeto() . "," . $acidentesTrabalho->getQuantidadeAcidenteOutros() . "," . $acidentesTrabalho->getQuantidadeObito() . "," . $media . "],"; ?>
+          <?php } ?>
+
+        ]);
+
+		var title = 'Evolucao de Acidentes ao Longo dos Anos em <?php echo $_REQUEST['cidade']; ; ?>';
+		
+        var options = {
+          title : title,
+          vAxis: {title: "Quantitativos"},
+          hAxis: {title: "Ano"},
+          seriesType: "bars",
+          series: {5: {type: "line"}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_divCidade'));
+        chart.draw(data, options);
+      }
+      google.setOnLoadCallback(drawVisualization);
+      
+    </script>
